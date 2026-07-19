@@ -1,0 +1,51 @@
+project_id = "salesforce-apex-lens"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage"]
+extra_search_path = ["public", "extensions"]
+
+[db]
+port = 54322
+major_version = 15
+
+[studio]
+enabled = true
+port = 54323
+
+[auth]
+enabled = true
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173"]
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+[functions.create-analysis]
+verify_jwt = true
+
+[functions.cancel-analysis]
+verify_jwt = true
+
+[functions.admin-users]
+verify_jwt = true
+
+[functions.prepare-project]
+verify_jwt = true
+
+[functions.create-review-units]
+verify_jwt = true
+
+[functions.process-review-units]
+verify_jwt = true
+
+[functions.validate-findings]
+verify_jwt = true
+
+[functions.finalize-report]
+verify_jwt = true
+
+[functions.recover-stalled-jobs]
+verify_jwt = true

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+dev-dist/
+.env
+.env.local
+.env.example
+coverage/
+.DS_Store
+*.log
+*.tsbuildinfo
+.supabase/
+supabase/.temp/
+.agents/
+.codex/
+prompt.md
+test-fixtures/
+docs/

@@ -1,0 +1,17 @@
+{
+  "name": "salesforce-apex-lens",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev": "npm run dev --workspace @apex-lens/web",
+    "preview": "npm run preview --workspace @apex-lens/web",
+    "build": "npm run build --workspace @apex-lens/web",
+    "lint": "npm run lint --workspace @apex-lens/web",
+    "test": "npm run test --workspace @apex-lens/web",
+    "typecheck": "npm run typecheck --workspace @apex-lens/web"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

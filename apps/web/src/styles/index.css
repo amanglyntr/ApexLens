@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: light; }
+  :root.dark { color-scheme: dark; }
+  * { @apply border-slate-200 dark:border-slate-800; }
+  body { @apply m-0 min-w-[320px] bg-slate-50 text-slate-900 antialiased dark:bg-ink-950 dark:text-slate-100; -webkit-tap-highlight-color: transparent; }
+  button, input, textarea { font: inherit; }
+  ::selection { @apply bg-accent-300/40; }
+}
+
+@layer components {
+  .surface { @apply rounded-2xl border bg-white shadow-card dark:bg-slate-900/75; }
+  .btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-700 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:ring-offset-ink-950; }
+  .btn-secondary { @apply inline-flex items-center justify-center gap-2 rounded-xl border bg-white px-4 py-2.5 text-sm font-semibold transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-accent-400 dark:bg-slate-900 dark:hover:bg-slate-800; }
+  .field { @apply w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/15 dark:bg-slate-950; }
+  .label { @apply mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300; }
+  .review-terminal { @apply relative overflow-hidden rounded-2xl border border-emerald-500/20 bg-[#07110f] shadow-card; }
+  .review-terminal-failed { @apply border-rose-500/30 bg-[#14090c]; }
+  .review-terminal-grid { @apply absolute inset-0 flex flex-col justify-around overflow-hidden font-mono text-[11px] font-bold leading-none text-emerald-300/20; letter-spacing: .12em; transform: rotate(-3deg) scale(1.08); }
+  .review-terminal-failed .review-terminal-grid { color: rgb(251 113 133 / .16); }
+  .review-terminal-grid span { animation: binary-drift 8s linear infinite alternate; white-space: nowrap; }
+  .review-scan { @apply pointer-events-none absolute inset-x-0 h-24 bg-gradient-to-b from-transparent via-emerald-300/10 to-transparent; animation: review-scan 3.5s linear infinite; }
+  .terminal-cursor { @apply text-emerald-400; animation: terminal-blink 1s steps(1) infinite; }
+}
+
+@keyframes binary-drift { from { transform: translateX(-8%); } to { transform: translateX(8%); } }
+@keyframes review-scan { from { transform: translateY(-5rem); } to { transform: translateY(18rem); } }
+@keyframes terminal-blink { 0%, 45% { opacity: 1; } 46%, 100% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .review-terminal-grid span, .review-scan, .terminal-cursor { animation: none; }
+}
