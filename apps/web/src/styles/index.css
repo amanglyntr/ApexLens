@@ -17,12 +17,13 @@
   .btn-secondary { @apply inline-flex items-center justify-center gap-2 rounded-xl border bg-white px-4 py-2.5 text-sm font-semibold transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-accent-400 dark:bg-slate-900 dark:hover:bg-slate-800; }
   .field { @apply w-full rounded-xl border bg-white px-3.5 py-2.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/15 dark:bg-slate-950; }
   .label { @apply mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300; }
-  .review-terminal { @apply relative overflow-hidden rounded-2xl border border-emerald-500/20 bg-[#07110f] shadow-card; }
-  .review-terminal-failed { @apply border-rose-500/30 bg-[#14090c]; }
-  .review-terminal-grid { @apply absolute inset-0 flex flex-col justify-around overflow-hidden font-mono text-[11px] font-bold leading-none text-emerald-300/20; letter-spacing: .12em; transform: rotate(-3deg) scale(1.08); }
-  .review-terminal-failed .review-terminal-grid { color: rgb(251 113 133 / .16); }
+  .review-terminal { @apply relative overflow-hidden rounded-2xl border border-accent-100 bg-gradient-to-br from-white via-accent-50/70 to-sky-50 shadow-card dark:border-emerald-500/20 dark:from-[#07110f] dark:via-[#07110f] dark:to-[#06201d]; }
+  .review-terminal-failed { @apply border-rose-200 from-white via-rose-50/70 to-orange-50 dark:border-rose-500/30 dark:from-[#14090c] dark:via-[#14090c] dark:to-[#21100d]; }
+  .review-terminal-grid { @apply absolute inset-0 flex flex-col justify-around overflow-hidden font-mono text-[11px] font-bold leading-none text-accent-700/[.07] dark:text-emerald-300/20; letter-spacing: .12em; transform: rotate(-3deg) scale(1.08); }
+  .review-terminal-failed .review-terminal-grid { color: rgb(225 29 72 / .07); }
+  .dark .review-terminal-failed .review-terminal-grid { color: rgb(251 113 133 / .16); }
   .review-terminal-grid span { animation: binary-drift 8s linear infinite alternate; white-space: nowrap; }
-  .review-scan { @apply pointer-events-none absolute inset-x-0 h-24 bg-gradient-to-b from-transparent via-emerald-300/10 to-transparent; animation: review-scan 3.5s linear infinite; }
+  .review-scan { @apply pointer-events-none absolute inset-x-0 h-24 bg-gradient-to-b from-transparent via-accent-300/10 to-transparent dark:via-emerald-300/10; animation: review-scan 3.5s linear infinite; }
   .terminal-cursor { @apply text-emerald-400; animation: terminal-blink 1s steps(1) infinite; }
 }
 

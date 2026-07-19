@@ -20,9 +20,9 @@ export function ReviewTerminal({ job }: { job: AnalysisJob }) {
     <div className="review-scan" aria-hidden="true" />
     <div className="relative z-10 grid gap-5 p-5 lg:grid-cols-[1.5fr_1fr] lg:p-6">
       <div>
-        <div className="flex items-center gap-2 font-mono text-[10px] font-bold tracking-[0.22em] text-emerald-300"><Terminal size={14} /> APEX LENS / {headline}</div>
-        <p className="mt-4 font-mono text-xl font-semibold text-white sm:text-2xl"><span className="text-emerald-400">$</span> {job.currentStage}<span className={!failed && !complete ? 'terminal-cursor' : ''}>_</span></p>
-        <p className={`mt-2 font-mono text-xs ${failed ? 'text-rose-300' : 'text-slate-400'}`}>
+        <div className={`flex items-center gap-2 font-mono text-[10px] font-bold tracking-[0.22em] ${failed ? 'text-rose-700 dark:text-rose-300' : 'text-accent-700 dark:text-emerald-300'}`}><Terminal size={14} /> APEX LENS / {headline}</div>
+        <p className="mt-4 font-mono text-xl font-semibold text-slate-900 dark:text-white sm:text-2xl"><span className={failed ? 'text-rose-600 dark:text-rose-400' : 'text-accent-600 dark:text-emerald-400'}>$</span> {job.currentStage}<span className={!failed && !complete ? 'terminal-cursor' : ''}>_</span></p>
+        <p className={`mt-2 font-mono text-xs ${failed ? 'text-rose-600 dark:text-rose-300' : 'text-slate-500 dark:text-slate-400'}`}>
           {failed ? `${job.errorCode ?? 'ANALYSIS_FAILED'} :: ${job.errorMessage ?? 'Processing stopped safely.'}` : complete ? 'Artifacts validated and report package committed.' : 'Masked source is moving through the secure review pipeline.'}
         </p>
       </div>
@@ -36,5 +36,5 @@ export function ReviewTerminal({ job }: { job: AnalysisJob }) {
 }
 
 function Telemetry({ icon: Icon, label, value }: { icon: typeof Binary; label: string; value: string }) {
-  return <div className="rounded-lg border border-white/10 bg-black/25 p-3 backdrop-blur-sm"><Icon className="text-emerald-400" size={14} /><p className="mt-2 font-mono text-base font-bold text-white">{value}</p><p className="mt-0.5 text-[9px] uppercase tracking-wider text-slate-500">{label}</p></div>
+  return <div className="rounded-lg border border-white/80 bg-white/70 p-3 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-black/25 dark:shadow-none"><Icon className="text-accent-600 dark:text-emerald-400" size={14} /><p className="mt-2 font-mono text-base font-bold text-slate-900 dark:text-white">{value}</p><p className="mt-0.5 text-[9px] uppercase tracking-wider text-slate-500">{label}</p></div>
 }
