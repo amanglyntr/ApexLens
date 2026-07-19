@@ -27,6 +27,8 @@ export const router = createBrowserRouter([
     { path: 'analysis/:jobId/report', lazy: async () => ({ Component: (await import('@/features/reports/ReportPage')).ReportPage }) },
     { path: 'findings', lazy: async () => ({ Component: (await import('@/features/findings/FindingsPage')).FindingsPage }) },
     { path: 'admin', element: <AdminOnly />, children: [
+      { index: true, element: <Navigate to="analytics" replace /> },
+      { path: 'analytics', lazy: async () => ({ Component: (await import('@/features/admin/AdminDashboardPage')).AdminDashboardPage }) },
       { path: 'users', lazy: async () => ({ Component: (await import('@/features/admin/AdminUsersPage')).AdminUsersPage }) },
     ] },
   ] },

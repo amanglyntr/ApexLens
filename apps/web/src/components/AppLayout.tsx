@@ -1,4 +1,4 @@
-import { BarChart3, FileSearch, FolderKanban, LogOut, Menu, Moon, Plus, Sun, UserCheck, X } from 'lucide-react'
+import { BarChart3, FileSearch, FolderKanban, Gauge, LogOut, Menu, Moon, Plus, Sun, UserCheck, X } from 'lucide-react'
 import { useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { Brand } from './Brand'
@@ -12,8 +12,8 @@ export function AppLayout() {
   const { theme, setTheme } = useTheme()
   const { user, signOut } = useAuth()
   const location = useLocation()
-  const nav = [{ to: '/', label: 'Overview', icon: BarChart3 }, { to: '/projects', label: 'Projects', icon: FolderKanban }, { to: '/findings', label: 'Findings', icon: FileSearch }, ...(user?.role === 'ADMIN' ? [{ to: '/admin/users', label: 'User approvals', icon: UserCheck }] : [])]
-  const title = location.pathname === '/' ? 'Overview' : location.pathname.includes('new') ? 'New analysis' : location.pathname.includes('analysis') ? 'Analysis workspace' : location.pathname.slice(1).replace('-', ' ')
+  const nav = [{ to: '/', label: 'Overview', icon: BarChart3 }, { to: '/projects', label: 'Projects', icon: FolderKanban }, { to: '/findings', label: 'Findings', icon: FileSearch }, ...(user?.role === 'ADMIN' ? [{ to: '/admin/analytics', label: 'Admin analytics', icon: Gauge }, { to: '/admin/users', label: 'User approvals', icon: UserCheck }] : [])]
+  const title = location.pathname === '/' ? 'Overview' : location.pathname === '/admin/analytics' ? 'Admin analytics' : location.pathname === '/admin/users' ? 'User approvals' : location.pathname.includes('new') ? 'New analysis' : location.pathname.includes('analysis') ? 'Analysis workspace' : location.pathname.slice(1).replace('-', ' ')
   return <div className="min-h-screen">
     {open && <button className="fixed inset-0 z-30 bg-slate-950/45 backdrop-blur-[1px] lg:hidden" onClick={() => setOpen(false)} aria-label="Close navigation overlay" />}
     <aside className={clsx('fixed inset-y-0 left-0 z-40 w-64 border-r bg-white p-4 transition-transform dark:bg-slate-950 lg:translate-x-0', open ? 'translate-x-0' : '-translate-x-full')}>
